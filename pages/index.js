@@ -12,7 +12,6 @@ export default function Home() {
     setError('');
     setResponse(null);
 
-    // Validate JSON input
     let parsedData;
     try {
       parsedData = JSON.parse(jsonInput);
@@ -31,7 +30,6 @@ export default function Home() {
       formData.append('file', fileInput);
     }
 
-    // Call the backend API
     const res = await fetch('/api/bfhl', {
       method: 'POST',
       body: formData,
@@ -47,7 +45,6 @@ export default function Home() {
     setSelectedOptions(options);
   };
 
-  // Normalize the key (e.g., "Highest lowercase alphabet" => "highest_lowercase_alphabet")
   const normalizeOptionKey = (option) => {
     return option.toLowerCase().replace(/ /g, '_');
   };
@@ -79,7 +76,7 @@ export default function Home() {
         <input
           type="file"
           onChange={(e) => setFileInput(e.target.files[0])}
-          className="mb-4"
+          className="mb-4 text-white"
         />
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">Submit</button>
       </form>
